@@ -1,0 +1,257 @@
+================================================================================
+  TUTORIAL 1: CHECKING STRINGS - APPLICATION CHECKLIST
+================================================================================
+  
+  [ yes] I completed the tutorial exercises
+
+
+CONNECTING TO MY DATA:
+  ----------------------
+  
+  1. Did I identify any string-related questions in my Week 1 questions list?
+  
+  [x] YES - Question #(s): ___________
+[ ] NO - Skip to question 4
+
+
+2. If YES, which technique from this tutorial could help address my question?
+  
+  [x] str_to_lower() - standardize capitalization
+[ ] str_to_upper() - standardize capitalization  
+[x] str_trim() - remove leading/trailing whitespace
+[x] str_replace() - fix typos or inconsistent spellings
+[ ] Other: ___________
+[ ] None of these apply
+
+
+3. Show what this technique would DO to my data:
+  
+  Variable name: species
+
+Example values BEFORE:
+Adelie 
+adelie
+Adelie
+
+What they would become AFTER:
+adelie
+adelie
+adelie
+
+  4. If this tutorial is NOT relevant to my data:
+  
+  Why not? (Check all that apply)
+[ ] I don't have any character/text variables
+   [ ] My text variables are already clean
+   [ ] My string issues are different from what this tutorial covers
+   [ ] Other: ___________
+
+
+================================================================================
+
+================================================================================
+TUTORIAL 2: CHECKING DATES - APPLICATION CHECKLIST
+================================================================================
+
+[yes] I completed the tutorial exercises
+
+
+
+CONNECTING TO MY DATA:
+----------------------
+
+1. Did I identify any date-related questions in my Week 1 questions list?
+
+   [x] YES - Question #(s): ___________
+   [ ] NO - Skip to question 5
+
+
+2. If YES, which technique from this tutorial could help address my question?
+
+   [x] dmy() / ymd() / mdy() - parse dates in different formats
+   [ ] excel_numeric_to_date() - convert Excel serial numbers
+   [ ] Checking for impossible dates (wrong day/month/year)
+   [ ] Other: ___________
+   [ ] None of these apply
+
+
+3. Show what this technique would DO to my data:
+
+   Variable name: date_egg
+   
+   Example values BEFORE:
+   - 16/11/2007
+   - 01/12/2009
+   - 23/11/2008
+   
+   What they would become AFTER:
+   - 2007-11-16
+   - 2009-12-01
+   - 2008-11-23
+
+
+4. Think about consequences:
+
+   What assumption am I making about date format?
+   (e.g., "01/12/2023 is DD/MM/YYYY not MM/DD/YYYY")
+   assuming that the date_egg variable is recorded using DD/MM/YY format
+   
+   What could go wrong if this assumption is incorrect?
+   the day and month values could be switched if interpreted wrong, this would affect calculations for breding times.
+   
+   How could I verify my assumption is correct?
+   i could check the data set documentation, review the date ranges to confirm
+   they match expected penguin breeding seasons
+
+
+5. If this tutorial is NOT relevant to my data:
+
+   Why not?
+   [ ] I don't have any date variables
+   [ ] My dates are already in proper format
+   [ ] My date issues are different from what this tutorial covers
+   [ ] Other: ___________
+
+
+================================================================================
+
+================================================================================
+TUTORIAL 3: CHECKING MISSING DATA PATTERNS - APPLICATION CHECKLIST
+================================================================================
+
+[x] I completed the tutorial exercises
+
+
+CONNECTING TO MY DATA:
+----------------------
+
+1. Did I identify any missing data questions in my Week 1 questions list?
+
+   [x] YES - Question #(s): ___________
+   [ ] NO - But I'll check anyway (missing data is common)
+
+
+2. Which variables have the most missing data?
+
+   Variable: delta_15n | Percent missing: ~4%
+   Variable: delta_13c | Percent missing: ~4%
+   Variable: sex | Percent missing: <1%
+
+
+3. Missingness types checklist
+
+
+   [ ] MCAR (Missing Completely At Random) - appears random/scattered
+   [x] MAR (Missing At Random) - related to other observed variables
+   [ ] MNAR (Missing Not At Random) - related to the missing value itself
+
+Why is it important to know what type of missing data we have? 
+If missingness is MAR, deletion may systematically remove certain groups and distort estimates, so targeted dropping or modelling/imputation may be better. 
+================================================================================
+
+
+================================================================================
+TUTORIAL 4: CHECKING DUPLICATES - APPLICATION CHECKLIST
+================================================================================
+
+[x] I completed the tutorial exercises
+
+
+CONNECTING TO MY DATA:
+----------------------
+
+1. Did I identify any duplicate-related questions in my Week 1 questions list?
+
+   [x] YES - Question #(s): ___________
+   [ ] NO - But I'll check anyway
+
+
+3. Think about consequences:
+
+   If I remove duplicates, what am I assuming?
+    I am assuming that duplicate rows represent accidental repeated records rather than true biological observations. 
+    Removing them assumes each penguin measurement should only appear once in the dataset.
+   
+   If duplicates are actually repeated measures, what should I do instead?
+   [ ] Keep them - they're legitimate observations
+   [x] Flag them for later analysis that accounts for non-independence
+   [ ] Other: ___________
+   
+   
+================================================================================
+
+
+================================================================================
+TUTORIAL 5: NUMERIC & CROSS-VARIABLE CONSISTENCY - APPLICATION CHECKLIST
+================================================================================
+
+[x] I completed the tutorial exercises
+
+
+PART A: NUMERIC PLAUSIBILITY
+-----------------------------
+
+1. Did I identify any numeric plausibility questions in my Week 1 questions list?
+
+   [x] YES - Question #(s): ___________
+   [ ] NO - Skip to Part B
+
+
+2. If YES, which numeric variable looks suspicious?
+
+   Variable name: body_mass_g
+   
+   Minimum value: 2700  | Is this biologically possible? [x] Yes [ ] No [ ] Unsure
+   Maximum value: 6300  | Is this biologically possible? [x] Yes [ ] No [ ] Unsure
+   
+
+   Why do these look wrong?
+   [ ] Negative value (impossible for this measurement)
+   [ ] Zero (should be NA instead)
+   [ ] Too large (exceeds known biological maximum)
+   [ ] Too small (below known biological minimum)
+   [ ] Possible units confusion (mixed kg and g?)
+   [x] Other: Species-specific plausibility issue
+
+
+
+PART B: CROSS-VARIABLE CONSISTENCY
+-----------------------------------
+
+4. Did I identify any cross-variable questions in my Week 1 questions list?
+
+   [x] YES - Question #(s): ___________
+   [ ] NO - But I'll check anyway
+
+
+5. Choose TWO variables that should be related (e.g., body length and body mass,
+   sex and reproductive status, species and location):
+
+   Variable 1: flipper_length_mm
+   Variable 2: body_mass_g
+   
+   What relationship do I expect between them?
+   [x] Positive correlation (both increase together)
+   [ ] Negative correlation (one increases, other decreases)
+   [ ] Biological constraint (certain combinations impossible)
+   [ ] Spatial constraint (certain combinations shouldn't occur)
+   [ ] Other: ___________
+   
+   Describe the expected relationship:
+   penguins with higher body mass points far from this trend coud indicate measurement error.
+
+
+6. Think about consequences:
+
+   If these variables are inconsistent, what should I do?
+   [ ] Remove the observations
+   [ ] Convert one variable to NA (which one? _________)
+   [x] Flag for review but keep both
+   [ ] Query the data collector
+   [ ] Other: ___________
+   
+   Justification:
+   Outliers are not automatically errors—biological variation exists. For this dataset, the basic ranges
+   look plausible. However, a small number of records are species- or relationship-unusual. Best practice is to flag these records for checking.
+
+================================================================================

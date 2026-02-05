@@ -1,0 +1,59 @@
+WEEK 2 CLEANING PLAN
+====================
+Name: [Joel]
+Date: [30-01-26]
+
+I've completed all 5 tutorials and application checklists.
+
+Looking across all my checklists, these are the 2 most important issues 
+to address in Week 2:
+
+
+ISSUE 1 (Most Important)
+-------------------------
+Brief description: Are there inconsistent spellings/capitalisation/whitespace in categorical variables 
+like species, island, sex, or clutch_completion that would create duplicate levels?
+
+Which tutorial provides the solution: [Tutorial 1]
+
+Which variable(s) affected: [species, island, sex, or clutch_completion]
+
+Why this is important to fix: [Inconsistent category labels would cause R to treat identical biological groups as separate categories.
+This would produce incorrect species counts, inaccurate summary statistics, and unreliable comparisons between groups]
+
+What I plan to do: [I will standardise text variables by converting them to consistent lowercase format, 
+removing extra whitespace, and correcting any inconsistent spellings using string cleaning functions such as str_to_lower(), str_trim(), and str_replace()]
+
+
+
+ISSUE 2 (Second Most Important)
+--------------------------------
+Brief description: [The date_egg variable is stored as character text rather than a proper date format, which could cause incorrect date interpretation during analysis.]
+
+Which tutorial provides the solution: [Tutorial 2]
+
+Which variable(s) affected: [date_egg]
+
+Why this is important to fix: [Incorrect date formatting can lead to errors when calculating time ranges, summarising breeding seasons, or analysing temporal trends in penguin reproduction.]
+
+What I plan to do: [I will convert the date_egg variable into a standard date format using the lubridate dmy() function and check for parsing errors or inconsistent date entries.]
+
+
+
+OTHER ISSUES I NOTICED (but won't fix in Week 2)
+-------------------------------------------------
+- Missing values in variables such as delta_15n, delta_13c, sex, and some body measurements, which may affect summary calculations.
+- A small number of biologically unusual body mass values that may represent natural variation or measurement error.
+- Potential cross-variable inconsistencies between body mass and flipper length that require further investigation.
+
+
+
+QUESTIONS TO DISCUSS IN WEEK 2
+-------------------------------
+Things I'm still unsure about:
+
+1. How to decide when missing data should be removed versus handled using statistical methods such as imputation.
+
+2. How to determine whether extreme biological values represent real variation or measurement errors.
+
+3. Whether it is better to permanently clean datasets or to create cleaned copies for different analyses.
