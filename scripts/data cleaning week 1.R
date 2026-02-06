@@ -185,7 +185,7 @@ penguins_clean_names |>
 
 penguins_clean_names <- penguins_clean_names |> 
   mutate(year = lubridate::year(date_egg))
-
+  
 ##chapter 7--------------------------------------------------------------------
 # Check ranges of all numeric variables at once
 penguins_clean_names |> 
